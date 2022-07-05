@@ -3,11 +3,12 @@ let register = document.getElementById("register");
 let filename;
 
 buttonAdd.addEventListener("click", () => {
-  filename = document.getElementById("filename").value;
+  filename = document.getElementById("filename");
 
-  if(filename){    
+  if(filename.value){    
     if(register.classList.contains("close")){
         buttonAdd.classList.add("close")
+        filename.classList.add("close")
         register.classList.remove("close")
         timer();   
       }
@@ -28,6 +29,7 @@ const timer = () => {
       if(writingTime < 0){
           const content = document.getElementById("text").value;
           buttonAdd.classList.remove("close")
+          filename.classList.remove("close")
           register.classList.add("close")
           document.getElementById('head').removeChild(pTimer);
           downloadText(filename, content)
@@ -48,7 +50,7 @@ function downloadText(filename, content){
    })
    const fileUrl = URL.createObjectURL(blob);
    element.setAttribute('href', fileUrl);
-   element.setAttribute('download', filename+'.txt');
+   element.setAttribute('download', filename.value+'.txt');
    element.style.display = 'none';
 
    document.body.appendChild(element);
