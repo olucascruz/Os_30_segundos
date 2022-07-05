@@ -17,3 +17,7 @@ body{
     height: 25px;
     width: 25px;
   }
+
+#Timer {
+  margin-left: 90px;
+}
